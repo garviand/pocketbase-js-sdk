@@ -1194,4 +1194,4 @@ declare class Client {
      */
     private serializeQueryParams;
 }
-export { BeforeSendResult, RecordService, Client as default };
+export { BeforeSendResult, RecordService, RecordListOptions, Client as default };
