@@ -456,6 +456,13 @@ declare class AdminService extends CrudService<AdminModel> {
      */
     authRefresh(body?: any, query?: any): Promise<AdminAuthResponse>;
     /**
+     * Generates a token for user by email
+     * returns a new token and admin data.
+     *
+     * On success this method automatically updates the client's AuthStore data.
+     */
+    generateAuthRecordToken(email: string): Promise<AdminAuthResponse>;
+    /**
      * Sends admin password reset request.
      */
     requestPasswordReset(email: string, options?: CommonOptions): Promise<boolean>;

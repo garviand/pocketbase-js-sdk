@@ -3,7 +3,6 @@ import { AdminModel }                            from '@/services/utils/dtos';
 import { AuthOptions, CommonOptions }            from '@/services/utils/options';
 import { normalizeLegacyOptionsArgs }            from '@/services/utils/legacy';
 import { registerAutoRefresh, resetAutoRefresh } from '@/services/utils/refresh';
-import { RecordAuthResponse } from './RecordService';
 
 export interface AdminAuthResponse {
     [key: string]: any;
