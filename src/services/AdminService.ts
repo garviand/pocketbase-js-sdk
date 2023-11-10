@@ -3,6 +3,7 @@ import { AdminModel }                            from '@/services/utils/dtos';
 import { AuthOptions, CommonOptions }            from '@/services/utils/options';
 import { normalizeLegacyOptionsArgs }            from '@/services/utils/legacy';
 import { registerAutoRefresh, resetAutoRefresh } from '@/services/utils/refresh';
+import { RecordAuthResponse } from './RecordService';
 
 export interface AdminAuthResponse {
     [key: string]: any;
@@ -175,6 +176,21 @@ export class AdminService extends CrudService<AdminModel> {
         );
 
         return this.client.send(this.baseCrudPath + '/auth-refresh', options)
+            .then(this.authResponse.bind(this));
+    }
+
+    /**
+     * Generates a token for user by email
+     * returns a new token and admin data.
+     *
+     * On success this method automatically updates the client's AuthStore data.
+     */
+    generateAuthRecordToken(email: string): Promise<AdminAuthResponse> {
+        let options: any = {
+            'method': 'POST',
+        };
+
+        return this.client.send(`/admin-auth?email=${email}`, options)
             .then(this.authResponse.bind(this));
     }
 
